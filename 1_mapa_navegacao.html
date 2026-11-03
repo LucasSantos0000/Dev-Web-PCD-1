@@ -1,46 +1,305 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mapa de Navegação</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;color:#222;background:#fff;margin:0;padding:24px}
-h1{font-size:24px;margin:0 0 4px}
-h2{font-size:18px;margin:32px 0 10px}
-p{margin:0 0 10px;max-width:760px;line-height:1.5}
-.diag{overflow-x:auto;border:1px solid #ccc;padding:10px}
-.b{fill:#fff;stroke:#333;stroke-width:1.2}
-.lg{fill:#1f4e79;stroke:#1f4e79}
-.tlg{fill:#fff;font-size:15px;font-weight:bold}
-.p{fill:#dbe6f1;stroke:#1f4e79;stroke-width:1.5}
-.tp{font-size:15px;font-weight:bold}
-.td{font-size:12px;fill:#555}
-.tb{font-size:13.5px}
-.sb{fill:#f3f3f3;stroke:#999;stroke-dasharray:4 3}
-.ts{font-size:12px;fill:#444}
-.ln{stroke:#555;stroke-width:1.2}
-.ln2{stroke:#999;stroke-width:1}
-ul{margin:0;padding-left:20px;line-height:1.7;max-width:760px}
-.tab{overflow-x:auto}
-table{border-collapse:collapse;min-width:640px;font-size:14px}
-th,td{border:1px solid #bbb;padding:7px 10px;text-align:left}
-th{background:#dbe6f1}
-td:first-child{font-weight:bold}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa de Navegação</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+      background: #fff;
+      margin: 0;
+      padding: 24px
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0 0 4px
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 32px 0 10px
+    }
+
+    p {
+      margin: 0 0 10px;
+      max-width: 760px;
+      line-height: 1.5
+    }
+
+    .diag {
+      overflow-x: auto;
+      border: 1px solid #ccc;
+      padding: 10px
+    }
+
+    .b {
+      fill: #fff;
+      stroke: #333;
+      stroke-width: 1.2
+    }
+
+    .lg {
+      fill: #1f4e79;
+      stroke: #1f4e79
+    }
+
+    .tlg {
+      fill: #fff;
+      font-size: 15px;
+      font-weight: bold
+    }
+
+    .p {
+      fill: #dbe6f1;
+      stroke: #1f4e79;
+      stroke-width: 1.5
+    }
+
+    .tp {
+      font-size: 15px;
+      font-weight: bold
+    }
+
+    .td {
+      font-size: 12px;
+      fill: #555
+    }
+
+    .tb {
+      font-size: 13.5px
+    }
+
+    .sb {
+      fill: #f3f3f3;
+      stroke: #999;
+      stroke-dasharray: 4 3
+    }
+
+    .ts {
+      font-size: 12px;
+      fill: #444
+    }
+
+    .ln {
+      stroke: #555;
+      stroke-width: 1.2
+    }
+
+    .ln2 {
+      stroke: #999;
+      stroke-width: 1
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.7;
+      max-width: 760px
+    }
+
+    .tab {
+      overflow-x: auto
+    }
+
+    table {
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 14px
+    }
+
+    th,
+    td {
+      border: 1px solid #bbb;
+      padding: 7px 10px;
+      text-align: left
+    }
+
+    th {
+      background: #dbe6f1
+    }
+
+    td:first-child {
+      font-weight: bold
+    }
+  </style>
 </head>
+
 <body>
-<h1>Mapa de Navegação</h1>
-<p>Sistema de avaliação atitudinal. Depois do login, cada usuário vê apenas as telas do seu perfil. As caixas tracejadas são passos ou ações dentro da tela.</p>
-<div class="diag"><svg viewBox="0 0 1000 537" width="1000" height="537"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs><rect x="420.0" y="20" width="160" height="40" class="lg"/><text x="500" y="45.0" text-anchor="middle" class="tlg">Login</text><line x1="500" y1="60" x2="500" y2="85" class="ln"/><line x1="125" y1="85" x2="875" y2="85" class="ln"/><line x1="125" y1="85" x2="125" y2="105" class="ln" marker-end="url(#a)"/><rect x="30.0" y="108" width="190" height="50" class="p"/><text x="125" y="130" text-anchor="middle" class="tp">Professor</text><text x="125" y="148" text-anchor="middle" class="td">(celular)</text><path d="M42.0,202 H56.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="58.0" y="185" width="162" height="34" class="b"/><text x="68.0" y="207" class="tb">Minhas turmas</text><path d="M42.0,256 H56.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="58.0" y="239" width="162" height="34" class="b"/><text x="68.0" y="261" class="tb">Registrar observação</text><path d="M76.0,273 V296 H86.0" class="ln2" fill="none"/><rect x="86.0" y="283" width="134" height="26" class="sb"/><text x="94.0" y="300" class="ts">escolher aluno</text><path d="M76.0,309 V330 H86.0" class="ln2" fill="none"/><rect x="86.0" y="317" width="134" height="26" class="sb"/><text x="94.0" y="334" class="ts">escolher dimensão</text><path d="M76.0,343 V364 H86.0" class="ln2" fill="none"/><rect x="86.0" y="351" width="134" height="26" class="sb"/><text x="94.0" y="368" class="ts">escolher tipo</text><path d="M42.0,412 H56.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="58.0" y="395" width="162" height="34" class="b"/><text x="68.0" y="417" class="tb">Histórico do aluno</text><path d="M42.0,466 H56.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="58.0" y="449" width="162" height="34" class="b"/><text x="68.0" y="471" class="tb">Devolutiva</text><path d="M76.0,483 V506 H86.0" class="ln2" fill="none"/><rect x="86.0" y="493" width="134" height="26" class="sb"/><text x="94.0" y="510" class="ts">pedir autoavaliação</text><line x1="42.0" y1="158" x2="42.0" y2="466" class="ln"/><line x1="375" y1="85" x2="375" y2="105" class="ln" marker-end="url(#a)"/><rect x="280.0" y="108" width="190" height="50" class="p"/><text x="375" y="130" text-anchor="middle" class="tp">Coordenação</text><text x="375" y="148" text-anchor="middle" class="td">(computador)</text><path d="M292.0,202 H306.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="308.0" y="185" width="162" height="34" class="b"/><text x="318.0" y="207" class="tb">Alertas</text><path d="M326.0,219 V242 H336.0" class="ln2" fill="none"/><rect x="336.0" y="229" width="134" height="26" class="sb"/><text x="344.0" y="246" class="ts">detalhe do aluno</text><path d="M326.0,255 V276 H336.0" class="ln2" fill="none"/><rect x="336.0" y="263" width="134" height="26" class="sb"/><text x="344.0" y="280" class="ts">registrar intervenção</text><path d="M292.0,324 H306.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="308.0" y="307" width="162" height="34" class="b"/><text x="318.0" y="329" class="tb">Painel por turma</text><path d="M292.0,378 H306.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="308.0" y="361" width="162" height="34" class="b"/><text x="318.0" y="383" class="tb">Clima escolar</text><path d="M326.0,395 V418 H336.0" class="ln2" fill="none"/><rect x="336.0" y="405" width="134" height="26" class="sb"/><text x="344.0" y="422" class="ts">intervenções</text><path d="M292.0,466 H306.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="308.0" y="449" width="162" height="34" class="b"/><text x="318.0" y="471" class="tb">Contestações</text><path d="M326.0,483 V506 H336.0" class="ln2" fill="none"/><rect x="336.0" y="493" width="134" height="26" class="sb"/><text x="344.0" y="510" class="ts">responder</text><line x1="292.0" y1="158" x2="292.0" y2="466" class="ln"/><line x1="625" y1="85" x2="625" y2="105" class="ln" marker-end="url(#a)"/><rect x="530.0" y="108" width="190" height="50" class="p"/><text x="625" y="130" text-anchor="middle" class="tp">Aluno</text><text x="625" y="148" text-anchor="middle" class="td">(celular)</text><path d="M542.0,202 H556.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="558.0" y="185" width="162" height="34" class="b"/><text x="568.0" y="207" class="tb">Meu progresso</text><path d="M542.0,256 H556.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="558.0" y="239" width="162" height="34" class="b"/><text x="568.0" y="261" class="tb">Autoavaliação</text><path d="M542.0,310 H556.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="558.0" y="293" width="162" height="34" class="b"/><text x="568.0" y="315" class="tb">Meus registros</text><path d="M576.0,327 V350 H586.0" class="ln2" fill="none"/><rect x="586.0" y="337" width="134" height="26" class="sb"/><text x="594.0" y="354" class="ts">contestar registro</text><line x1="542.0" y1="158" x2="542.0" y2="310" class="ln"/><line x1="875" y1="85" x2="875" y2="105" class="ln" marker-end="url(#a)"/><rect x="780.0" y="108" width="190" height="50" class="p"/><text x="875" y="130" text-anchor="middle" class="tp">Responsável</text><text x="875" y="148" text-anchor="middle" class="td">(celular)</text><path d="M792.0,202 H806.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="808.0" y="185" width="162" height="34" class="b"/><text x="818.0" y="207" class="tb">Início</text><path d="M826.0,219 V242 H836.0" class="ln2" fill="none"/><rect x="836.0" y="229" width="134" height="26" class="sb"/><text x="844.0" y="246" class="ts">devolutivas</text><path d="M792.0,290 H806.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="808.0" y="273" width="162" height="34" class="b"/><text x="818.0" y="295" class="tb">Registros do aluno</text><path d="M826.0,307 V330 H836.0" class="ln2" fill="none"/><rect x="836.0" y="317" width="134" height="26" class="sb"/><text x="844.0" y="334" class="ts">contestar registro</text><path d="M792.0,378 H806.0" class="ln" fill="none" marker-end="url(#a)"/><rect x="808.0" y="361" width="162" height="34" class="b"/><text x="818.0" y="383" class="tb">Mensagens</text><line x1="792.0" y1="158" x2="792.0" y2="378" class="ln"/></svg></div>
-<h2>Ligações entre os perfis</h2>
-<ul>
-<li>O registro feito pelo professor aparece para o aluno e o responsável e entra nos alertas da coordenação.</li>
-<li>O professor pede a autoavaliação e a resposta do aluno aparece na tela de devolutiva.</li>
-<li>A contestação do aluno ou responsável vai para a coordenação, que responde em Mensagens.</li>
-<li>Quando a coordenação registra uma intervenção, o professor vê um aviso no histórico do aluno.</li>
-</ul>
-<h2>Permissões por perfil</h2>
-<div class="tab"><table><tr><th></th><th>Professor</th><th>Coordenação</th><th>Aluno</th><th>Responsável</th></tr><tr><td>Registrar observação</td><td>Sim</td><td>Sim</td><td>Não</td><td>Não</td></tr><tr><td>Ver registros de um aluno</td><td>Das suas turmas</td><td>Todos</td><td>Só os seus</td><td>Só do filho(a)</td></tr><tr><td>Ver alertas</td><td>Não</td><td>Sim</td><td>Não</td><td>Não</td></tr><tr><td>Ver painel por turma</td><td>Só a sua turma</td><td>Todas</td><td>Não</td><td>Não</td></tr><tr><td>Responder autoavaliação</td><td>Não</td><td>Não</td><td>Sim</td><td>Não</td></tr><tr><td>Escrever devolutiva</td><td>Sim</td><td>Sim</td><td>Não</td><td>Não</td></tr><tr><td>Contestar registro</td><td>Não</td><td>Responde</td><td>Sim</td><td>Sim</td></tr><tr><td>Ranking entre alunos</td><td>Não existe</td><td>Não existe</td><td>Não existe</td><td>Não existe</td></tr></table></div>
+  <h1>Mapa de Navegação</h1>
+  <p>Sistema de avaliação atitudinal. Depois do login, cada usuário vê apenas as telas do seu perfil. As caixas
+    tracejadas são passos ou ações dentro da tela.</p>
+  <div class="diag"><svg viewBox="0 0 1000 537" width="1000" height="537">
+      <defs>
+        <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0L10,5L0,10z" fill="#555" />
+        </marker>
+      </defs>
+      <rect x="420.0" y="20" width="160" height="40" class="lg" /><text x="500" y="45.0" text-anchor="middle"
+        class="tlg">Login</text>
+      <line x1="500" y1="60" x2="500" y2="85" class="ln" />
+      <line x1="125" y1="85" x2="875" y2="85" class="ln" />
+      <line x1="125" y1="85" x2="125" y2="105" class="ln" marker-end="url(#a)" />
+      <rect x="30.0" y="108" width="190" height="50" class="p" /><text x="125" y="130" text-anchor="middle"
+        class="tp">Professor</text><text x="125" y="148" text-anchor="middle" class="td">(celular)</text>
+      <path d="M42.0,202 H56.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="58.0" y="185" width="162" height="34" class="b" /><text x="68.0" y="207" class="tb">Minhas turmas</text>
+      <path d="M42.0,256 H56.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="58.0" y="239" width="162" height="34" class="b" /><text x="68.0" y="261" class="tb">Registrar
+        observação</text>
+      <path d="M76.0,273 V296 H86.0" class="ln2" fill="none" />
+      <rect x="86.0" y="283" width="134" height="26" class="sb" /><text x="94.0" y="300" class="ts">escolher
+        aluno</text>
+      <path d="M76.0,309 V330 H86.0" class="ln2" fill="none" />
+      <rect x="86.0" y="317" width="134" height="26" class="sb" /><text x="94.0" y="334" class="ts">escolher
+        dimensão</text>
+      <path d="M76.0,343 V364 H86.0" class="ln2" fill="none" />
+      <rect x="86.0" y="351" width="134" height="26" class="sb" /><text x="94.0" y="368" class="ts">escolher tipo</text>
+      <path d="M42.0,412 H56.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="58.0" y="395" width="162" height="34" class="b" /><text x="68.0" y="417" class="tb">Histórico do
+        aluno</text>
+      <path d="M42.0,466 H56.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="58.0" y="449" width="162" height="34" class="b" /><text x="68.0" y="471" class="tb">Devolutiva</text>
+      <path d="M76.0,483 V506 H86.0" class="ln2" fill="none" />
+      <rect x="86.0" y="493" width="134" height="26" class="sb" /><text x="94.0" y="510" class="ts">pedir
+        autoavaliação</text>
+      <line x1="42.0" y1="158" x2="42.0" y2="466" class="ln" />
+      <line x1="375" y1="85" x2="375" y2="105" class="ln" marker-end="url(#a)" />
+      <rect x="280.0" y="108" width="190" height="50" class="p" /><text x="375" y="130" text-anchor="middle"
+        class="tp">Coordenação</text><text x="375" y="148" text-anchor="middle" class="td">(computador)</text>
+      <path d="M292.0,202 H306.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="308.0" y="185" width="162" height="34" class="b" /><text x="318.0" y="207" class="tb">Alertas</text>
+      <path d="M326.0,219 V242 H336.0" class="ln2" fill="none" />
+      <rect x="336.0" y="229" width="134" height="26" class="sb" /><text x="344.0" y="246" class="ts">detalhe do
+        aluno</text>
+      <path d="M326.0,255 V276 H336.0" class="ln2" fill="none" />
+      <rect x="336.0" y="263" width="134" height="26" class="sb" /><text x="344.0" y="280" class="ts">registrar
+        intervenção</text>
+      <path d="M292.0,324 H306.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="308.0" y="307" width="162" height="34" class="b" /><text x="318.0" y="329" class="tb">Painel por
+        turma</text>
+      <path d="M292.0,378 H306.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="308.0" y="361" width="162" height="34" class="b" /><text x="318.0" y="383" class="tb">Clima
+        escolar</text>
+      <path d="M326.0,395 V418 H336.0" class="ln2" fill="none" />
+      <rect x="336.0" y="405" width="134" height="26" class="sb" /><text x="344.0" y="422"
+        class="ts">intervenções</text>
+      <path d="M292.0,466 H306.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="308.0" y="449" width="162" height="34" class="b" /><text x="318.0" y="471" class="tb">Contestações</text>
+      <path d="M326.0,483 V506 H336.0" class="ln2" fill="none" />
+      <rect x="336.0" y="493" width="134" height="26" class="sb" /><text x="344.0" y="510" class="ts">responder</text>
+      <line x1="292.0" y1="158" x2="292.0" y2="466" class="ln" />
+      <line x1="625" y1="85" x2="625" y2="105" class="ln" marker-end="url(#a)" />
+      <rect x="530.0" y="108" width="190" height="50" class="p" /><text x="625" y="130" text-anchor="middle"
+        class="tp">Aluno</text><text x="625" y="148" text-anchor="middle" class="td">(celular)</text>
+      <path d="M542.0,202 H556.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="558.0" y="185" width="162" height="34" class="b" /><text x="568.0" y="207" class="tb">Meu
+        progresso</text>
+      <path d="M542.0,256 H556.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="558.0" y="239" width="162" height="34" class="b" /><text x="568.0" y="261"
+        class="tb">Autoavaliação</text>
+      <path d="M542.0,310 H556.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="558.0" y="293" width="162" height="34" class="b" /><text x="568.0" y="315" class="tb">Meus
+        registros</text>
+      <path d="M576.0,327 V350 H586.0" class="ln2" fill="none" />
+      <rect x="586.0" y="337" width="134" height="26" class="sb" /><text x="594.0" y="354" class="ts">contestar
+        registro</text>
+      <line x1="542.0" y1="158" x2="542.0" y2="310" class="ln" />
+      <line x1="875" y1="85" x2="875" y2="105" class="ln" marker-end="url(#a)" />
+      <rect x="780.0" y="108" width="190" height="50" class="p" /><text x="875" y="130" text-anchor="middle"
+        class="tp">Responsável</text><text x="875" y="148" text-anchor="middle" class="td">(celular)</text>
+      <path d="M792.0,202 H806.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="808.0" y="185" width="162" height="34" class="b" /><text x="818.0" y="207" class="tb">Início</text>
+      <path d="M826.0,219 V242 H836.0" class="ln2" fill="none" />
+      <rect x="836.0" y="229" width="134" height="26" class="sb" /><text x="844.0" y="246" class="ts">devolutivas</text>
+      <path d="M792.0,290 H806.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="808.0" y="273" width="162" height="34" class="b" /><text x="818.0" y="295" class="tb">Registros do
+        aluno</text>
+      <path d="M826.0,307 V330 H836.0" class="ln2" fill="none" />
+      <rect x="836.0" y="317" width="134" height="26" class="sb" /><text x="844.0" y="334" class="ts">contestar
+        registro</text>
+      <path d="M792.0,378 H806.0" class="ln" fill="none" marker-end="url(#a)" />
+      <rect x="808.0" y="361" width="162" height="34" class="b" /><text x="818.0" y="383" class="tb">Mensagens</text>
+      <line x1="792.0" y1="158" x2="792.0" y2="378" class="ln" />
+    </svg></div>
+  <h2>Ligações entre os perfis</h2>
+  <ul>
+    <li>O registro feito pelo professor aparece para o aluno e o responsável e entra nos alertas da coordenação.</li>
+    <li>O professor pede a autoavaliação e a resposta do aluno aparece na tela de devolutiva.</li>
+    <li>A contestação do aluno ou responsável vai para a coordenação, que responde em Mensagens.</li>
+    <li>Quando a coordenação registra uma intervenção, o professor vê um aviso no histórico do aluno.</li>
+  </ul>
+  <h2>Permissões por perfil</h2>
+  <div class="tab">
+    <table>
+      <tr>
+        <th></th>
+        <th>Professor</th>
+        <th>Coordenação</th>
+        <th>Aluno</th>
+        <th>Responsável</th>
+      </tr>
+      <tr>
+        <td>Registrar observação</td>
+        <td>Sim</td>
+        <td>Sim</td>
+        <td>Não</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td>Ver registros de um aluno</td>
+        <td>Das suas turmas</td>
+        <td>Todos</td>
+        <td>Só os seus</td>
+        <td>Só do filho(a)</td>
+      </tr>
+      <tr>
+        <td>Ver alertas</td>
+        <td>Não</td>
+        <td>Sim</td>
+        <td>Não</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td>Ver painel por turma</td>
+        <td>Só a sua turma</td>
+        <td>Todas</td>
+        <td>Não</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td>Responder autoavaliação</td>
+        <td>Não</td>
+        <td>Não</td>
+        <td>Sim</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td>Escrever devolutiva</td>
+        <td>Sim</td>
+        <td>Sim</td>
+        <td>Não</td>
+        <td>Não</td>
+      </tr>
+      <tr>
+        <td>Contestar registro</td>
+        <td>Não</td>
+        <td>Responde</td>
+        <td>Sim</td>
+        <td>Sim</td>
+      </tr>
+      <tr>
+        <td>Ranking entre alunos</td>
+        <td>Não existe</td>
+        <td>Não existe</td>
+        <td>Não existe</td>
+        <td>Não existe</td>
+      </tr>
+    </table>
+  </div>
 </body>
+
 </html>
