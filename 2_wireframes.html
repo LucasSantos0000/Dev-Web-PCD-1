@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframes</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;color:#222;background:#fff;margin:0;padding:24px}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:18px;margin:34px 0 12px;border-bottom:1px solid #ccc;padding-bottom:6px}
+p{margin:0 0 10px;max-width:760px;line-height:1.5}
+.grid{display:flex;flex-wrap:wrap;gap:28px}
+.item{display:flex;flex-direction:column;gap:6px}
+.item h3{font-size:14px;margin:0}
+.item small{color:#666;font-size:12px;max-width:240px}
+.cel{width:200px;height:380px;border:2px solid #444;border-radius:18px;padding:16px 10px 8px;display:flex;flex-direction:column;gap:6px;box-sizing:border-box;position:relative}
+.pc{width:520px;max-width:100%;height:300px;border:2px solid #444;display:flex;box-sizing:border-box}
+.menu{width:90px;background:#e4e4e4;padding:10px 6px;display:flex;flex-direction:column;gap:8px;box-sizing:border-box}
+.cont{flex:1;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.x{background:#ddd;border:1px solid #aaa;font-size:10px;color:#555;display:flex;align-items:center;justify-content:center;text-align:center}
+.tr{background:#fff;border:1px dashed #888}
+.bt{background:#777;color:#fff;border-color:#777}
+.ti{height:10px;background:#888;width:60%}
+.li{height:6px;background:#ccc}
+.row{display:flex;gap:5px}
+.row>*{flex:1}
+.nav{margin-top:auto;display:flex;justify-content:space-around;border-top:1px solid #aaa;padding-top:6px}
+.nav span{width:22px;height:14px;background:#ccc}
+.alunos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.alunos span{height:34px;border-radius:50%;background:#ddd;border:1px solid #aaa;width:34px;margin:auto}
+.modal{position:absolute;left:0;right:0;bottom:0;border-top:2px solid #444;background:#fff;padding:8px;display:flex;flex-direction:column;gap:5px;border-radius:12px 12px 16px 16px}
+.fundo{position:absolute;inset:0;background:rgba(0,0,0,.15);border-radius:16px}
+.heat{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.heat span{height:16px;background:#bbb}
+.heat span:nth-child(3n){background:#888}
+.heat span:nth-child(4n){background:#eee}
+</style>
+</head>
+<body>
+<h1>Wireframes</h1>
+<p>Esboço do layout das principais telas. Professor, aluno e responsável usam celular; a coordenação usa computador.</p>
+
+<h2>Professor (celular)</h2>
+<div class="grid">
+ <div class="item"><h3>Turma</h3>
+  <div class="cel"><div class="ti"></div><div class="li" style="width:40%"></div>
+   <div class="alunos"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+   <div class="nav"><span></span><span></span><span></span></div></div>
+  <small>Clicar no aluno abre o registro.</small></div>
+ <div class="item"><h3>Registro (passos 2 e 3)</h3>
+  <div class="cel"><div class="ti"></div><div class="fundo"></div>
+   <div class="modal"><div class="li" style="width:50%;background:#888"></div>
+    <div class="x" style="height:22px">Responsabilidade</div><div class="x" style="height:22px">Colaboração</div><div class="x" style="height:22px">Autonomia</div><div class="x" style="height:22px">Participação</div><div class="x" style="height:22px">Convivência</div>
+    <div class="row"><div class="x" style="height:30px">Avanço</div><div class="x" style="height:30px">Neutro</div><div class="x tr" style="height:30px">Atenção</div></div></div></div>
+  <small>Aluno, dimensão e tipo: 3 cliques e salva.</small></div>
+ <div class="item"><h3>Histórico do aluno</h3>
+  <div class="cel"><div class="ti"></div><div class="x tr" style="height:24px">selecionar aluno</div>
+   <div class="li"></div><div class="li" style="width:80%"></div><div class="li"></div><div class="li" style="width:70%"></div><div class="li"></div><div class="li" style="width:85%"></div>
+   <div class="nav"><span></span><span></span><span></span></div></div>
+  <small>Lista de registros com data e professor.</small></div>
+ <div class="item"><h3>Devolutiva</h3>
+  <div class="cel"><div class="ti"></div><div class="x tr" style="height:24px">selecionar aluno</div>
+   <div class="x" style="height:90px">resumo por dimensão</div><div class="x tr" style="height:24px">pedir autoavaliação</div><div class="x tr" style="height:60px">texto da devolutiva</div><div class="x bt" style="height:26px">enviar</div>
+   <div class="nav"><span></span><span></span><span></span></div></div>
+  <small>Compara a visão do professor com a autoavaliação.</small></div>
+</div>
+
+<h2>Coordenação (computador)</h2>
+<div class="grid">
+ <div class="item"><h3>Alertas</h3>
+  <div class="pc"><div class="menu"><div class="li" style="background:#999"></div><div class="li"></div><div class="li"></div><div class="li"></div></div>
+   <div class="cont"><div class="ti" style="width:30%"></div>
+    <div class="row"><div class="x" style="height:40px">alertas</div><div class="x" style="height:40px">em análise</div><div class="x" style="height:40px">contestações</div></div>
+    <div class="row" style="font-size:10px;color:#666"><span>aluno</span><span>turma</span><span>atitude</span><span>faltas</span><span>notas</span></div>
+    <div class="li"></div><div class="li"></div><div class="li"></div><div class="li"></div><div class="li"></div></div></div>
+  <small>Cruza queda de atitude, faltas e notas. Os sinais aparecem como bolinhas coloridas.</small></div>
+ <div class="item"><h3>Detalhe do aluno</h3>
+  <div class="pc"><div class="menu"><div class="li" style="background:#999"></div><div class="li"></div><div class="li"></div><div class="li"></div></div>
+   <div class="cont"><div class="row"><div class="ti" style="flex:3"></div><div class="x bt" style="height:20px">registrar intervenção</div></div>
+    <div class="row"><div class="x" style="height:50px">atitude</div><div class="x" style="height:50px">frequência</div><div class="x" style="height:50px">média</div></div>
+    <div class="row"><div class="x" style="height:110px">barras por dimensão</div><div class="x" style="height:110px">últimos registros</div></div></div></div>
+  <small>Três indicadores, dimensões e registros.</small></div>
+ <div class="item"><h3>Painel por turma</h3>
+  <div class="pc"><div class="menu"><div class="li"></div><div class="li" style="background:#999"></div><div class="li"></div><div class="li"></div></div>
+   <div class="cont"><div class="ti" style="width:35%"></div><div class="heat"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+  <small>Turmas nas linhas, dimensões nas colunas. Cor mais escura indica mais registros de atenção.</small></div>
+ <div class="item"><h3>Clima escolar e intervenções</h3>
+  <div class="pc"><div class="menu"><div class="li"></div><div class="li"></div><div class="li" style="background:#999"></div><div class="li"></div></div>
+   <div class="cont"><div class="ti" style="width:40%"></div><div class="x" style="height:100px">gráfico do clima por mês</div><div class="li"></div><div class="li"></div><div class="li"></div><div class="x tr" style="height:20px;width:120px">nova intervenção</div></div></div>
+  <small>Evolução do clima e lista de intervenções feitas.</small></div>
+ <div class="item"><h3>Contestações</h3>
+  <div class="pc"><div class="menu"><div class="li"></div><div class="li"></div><div class="li"></div><div class="li" style="background:#999"></div></div>
+   <div class="cont"><div class="row" style="align-items:stretch"><div style="display:flex;flex-direction:column;gap:6px"><div class="x" style="height:36px">pedido 1</div><div class="x" style="height:36px">pedido 2</div><div class="x" style="height:36px">pedido 3</div></div>
+    <div style="flex:2;display:flex;flex-direction:column;gap:6px"><div class="x" style="height:40px">registro</div><div class="x tr" style="height:40px">mensagem do aluno</div><div class="x tr" style="height:40px">resposta</div><div class="row"><div class="x bt" style="height:22px">manter</div><div class="x bt" style="height:22px">corrigir</div></div></div></div></div></div>
+  <small>A coordenação lê o pedido e decide.</small></div>
+</div>
+
+<h2>Aluno e responsável (celular)</h2>
+<div class="grid">
+ <div class="item"><h3>Aluno: meu progresso</h3>
+  <div class="cel"><div class="ti"></div><div class="x" style="height:120px">barras: professor x eu</div><div class="x" style="height:80px">gráfico de evolução</div><div class="li"></div><div class="li" style="width:70%"></div>
+   <div class="nav"><span></span><span></span><span></span></div></div>
+  <small>Sem nota e sem comparação com colegas.</small></div>
+ <div class="item"><h3>Aluno: autoavaliação</h3>
+  <div class="cel"><div class="ti"></div>
+   <div class="li"></div><div class="row"><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div></div>
+   <div class="li"></div><div class="row"><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div></div>
+   <div class="li"></div><div class="row"><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div></div>
+   <div class="li"></div><div class="row"><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div></div>
+   <div class="li"></div><div class="row"><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div><div class="x" style="height:16px"></div></div>
+   <div class="x bt" style="height:26px">enviar</div>
+   <div class="nav"><span></span><span></span><span></span></div></div>
+  <small>Uma pergunta por dimensão, 4 opções.</small></div>
+ <div class="item"><h3>Registros e contestação</h3>
+  <div class="cel"><div class="ti"></div><div class="li"></div><div class="li"></div><div class="li"></div><div class="fundo"></div>
+   <div class="modal"><div class="li" style="width:50%;background:#888"></div><div class="li"></div><div class="li" style="width:70%"></div><div class="x tr" style="height:50px">mensagem</div><div class="x bt" style="height:24px">contestar</div></div></div>
+  <small>Aluno e responsável veem todos os registros e podem contestar.</small></div>
+ <div class="item"><h3>Responsável: início</h3>
+  <div class="cel"><div class="ti"></div><div class="x" style="height:60px">novidades</div><div class="x" style="height:100px">progresso do aluno</div><div class="x" style="height:60px">última devolutiva</div>
+   <div class="nav"><span></span><span></span><span></span></div></div>
+  <small>Resumo e devolutivas do filho(a).</small></div>
+</div>
+</body>
+</html>

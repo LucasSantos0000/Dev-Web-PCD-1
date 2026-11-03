@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo - Avaliação Atitudinal</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;color:#222;background:#f2f2f2;margin:0;padding:20px}
+h1{font-size:22px;margin:0 0 10px}
+h2{font-size:18px;margin:0 0 10px}
+h3{font-size:15px;margin:14px 0 6px}
+button{font:inherit;cursor:pointer}
+.perfis{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.perfis button{padding:8px 14px;border:1px solid #1f4e79;background:#fff;color:#1f4e79;border-radius:4px}
+.perfis button.on{background:#1f4e79;color:#fff}
+.cel{width:360px;max-width:100%;height:660px;background:#fff;border:8px solid #333;border-radius:26px;display:flex;flex-direction:column;overflow:hidden;position:relative;margin:0 auto}
+.topo{background:#1f4e79;color:#fff;padding:12px 14px;font-weight:bold}
+.tela{flex:1;overflow-y:auto;padding:14px}
+.abas{display:flex;border-top:1px solid #ccc}
+.abas button{flex:1;padding:12px 0;border:0;background:#fff;font-size:13px;color:#555}
+.abas button.on{color:#1f4e79;font-weight:bold;border-top:3px solid #1f4e79}
+.pc{max-width:1100px;margin:0 auto;background:#fff;border:1px solid #bbb;display:flex;min-height:600px}
+.lado{width:200px;background:#1f4e79;color:#fff;padding:16px 0;flex-shrink:0}
+.lado b{display:block;padding:0 16px 16px}
+.lado button{display:block;width:100%;text-align:left;padding:10px 16px;border:0;background:none;color:#dbe6f1}
+.lado button.on{background:#163a5c;color:#fff;font-weight:bold}
+.miolo{flex:1;padding:20px;min-width:0;overflow-x:auto}
+.alunos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px}
+.al{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px}
+.al span{width:46px;height:46px;border-radius:50%;background:#dbe6f1;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#1f4e79}
+.btn{display:block;width:100%;padding:11px;margin:6px 0;border:1px solid #1f4e79;background:#1f4e79;color:#fff;border-radius:4px}
+.btn2{display:block;width:100%;padding:11px;margin:6px 0;border:1px solid #999;background:#fff;border-radius:4px;text-align:left}
+.peq{display:inline-block;width:auto;padding:7px 12px;margin:4px 4px 4px 0}
+.fundo{position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:flex-end}
+.janela{background:#fff;width:100%;padding:14px;border-radius:14px 14px 0 0}
+.passo{font-size:12px;color:#777}
+.aviso{background:#e6f2e6;border:1px solid #7bb07b;padding:10px;font-size:14px;margin-bottom:10px}
+.cinza{color:#777;font-size:13px}
+.reg{border-bottom:1px solid #ddd;padding:8px 0;font-size:14px}
+.reg.clic{cursor:pointer}
+.tag{font-size:11px;padding:2px 6px;border-radius:3px;margin-left:4px}
+.t1{background:#d8ecd8;color:#2c6b2c}.t2{background:#e5e5e5;color:#555}.t3{background:#fbe8cc;color:#8a5200}
+select,textarea{width:100%;padding:8px;font:inherit;border:1px solid #999;border-radius:4px;margin:4px 0}
+textarea{height:70px}
+.barra{display:flex;align-items:center;gap:6px;font-size:13px;margin:5px 0}
+.barra .nome{width:110px}
+.barra .fundo2{flex:1;background:#eee;height:10px;position:relative}
+.barra .fundo2 i{position:absolute;left:0;top:0;height:10px;background:#1f4e79}
+.barra .fundo2 i.eu{background:#8fb3d6;top:5px;height:5px}
+.opc{display:flex;gap:4px;margin:4px 0 10px}
+.opc button{flex:1;padding:7px 2px;font-size:11px;border:1px solid #999;background:#fff;border-radius:3px}
+.opc button.on{background:#1f4e79;color:#fff;border-color:#1f4e79}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid #ddd;padding:9px 8px;text-align:left}
+th{background:#f0f0f0}
+tr.clic{cursor:pointer}tr.clic:hover{background:#f6f9fc}
+.bola{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ddd;margin-right:4px}
+.bola.on{background:#c0392b}
+.cards{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.card{border:1px solid #ccc;padding:12px 16px;min-width:150px}
+.card b{display:block;font-size:24px}
+.card.ver b{color:#c0392b}
+.heat td{text-align:center;color:#222}
+.msg{background:#f0f0f0;padding:8px;margin:6px 0;font-size:14px}
+.ok{color:#2c6b2c;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>Protótipo - Sistema de Avaliação Atitudinal</h1>
+<div class="perfis">
+ <button data-p="prof">Professor</button>
+ <button data-p="coord">Coordenação</button>
+ <button data-p="aluno">Aluno</button>
+ <button data-p="resp">Responsável</button>
+</div>
+<div id="app"></div>
+
+<script>
+var DIM=["Responsabilidade","Colaboração","Autonomia","Participação","Convivência"];
+var TIPO={1:"Avanço",2:"Neutro",3:"Atenção"};
+var TURMA=["Ana","Bruno","Camila","Davi","Eduarda","Felipe","Gabriela","Heitor","Isabela","João","Júlia","Lucas","Manuela","Miguel","Pedro","Sofia"];
+var regs=[
+ {id:1,al:"Ana",d:1,t:1,data:"29/10",prof:"Marta (Mat.)",obs:"Ajudou o grupo a resolver a atividade."},
+ {id:2,al:"Ana",d:2,t:2,data:"28/10",prof:"Helena (Ciências)",obs:""},
+ {id:3,al:"Ana",d:3,t:1,data:"27/10",prof:"Ricardo (História)",obs:"Participou do debate."},
+ {id:4,al:"Ana",d:0,t:3,data:"21/10",prof:"Ricardo (História)",obs:"Não entregou o trabalho no prazo."},
+ {id:5,al:"Ana",d:4,t:1,data:"20/10",prof:"Helena (Ciências)",obs:""},
+ {id:6,al:"Ana",d:2,t:3,data:"16/10",prof:"Marta (Mat.)",obs:"Parou a lista na 2ª questão."},
+ {id:7,al:"Bruno",d:3,t:1,data:"28/10",prof:"Marta (Mat.)",obs:""},
+ {id:8,al:"Lucas",d:0,t:3,data:"27/10",prof:"Lúcia (Port.)",obs:"Sem material."}
+];
+var cont=[{al:"Pedro",turma:"7º A",reg:"Convivência - Atenção (27/10)",msg:"Eu estava explicando a atividade para um colega que faltou.",st:"aberta"}];
+var interv=[["Rodas de conversa","7º B","Em andamento"],["Reunião com a família","Beatriz - 7º B","Concluída"],["Monitoria de Matemática","6º A","Concluída"]];
+var prof=[3.3,3.6,2.6,3.4,3.7], auto=null, pedido=false, devol="";
+var S={p:"prof",tela:"turma",al:null,d:null,passo:0,ultimo:null,hist:"Ana",reg:null,coordTela:"alertas",alerta:null,c:0};
+var nid=100;
+
+function $(h){document.getElementById("app").innerHTML=h}
+function tg(t){return '<span class="tag t'+t+'">'+TIPO[t]+'</span>'}
+function lista(al,clic){
+ var r=regs.filter(function(x){return x.al==al});
+ if(!r.length)return '<p class="cinza">Nenhum registro ainda.</p>';
+ return r.map(function(x){return '<div class="reg'+(clic?' clic" data-reg="'+x.id:'')+'"><b>'+DIM[x.d]+'</b>'+tg(x.t)+(x.contestado?' <span class="tag t2">contestado</span>':'')+'<br><span class="cinza">'+x.data+' - '+x.prof+'</span>'+(x.obs?'<br>'+x.obs:'')+'</div>'}).join("");
+}
+function barras(a,b){
+ return DIM.map(function(d,i){return '<div class="barra"><span class="nome">'+d+'</span><span class="fundo2"><i style="width:'+(a[i]/4*100)+'%"></i>'+(b?'<i class="eu" style="width:'+(b[i]/4*100)+'%"></i>':'')+'</span></div>'}).join("");
+}
+function celular(titulo,abas,conteudo,extra){
+ var a=abas.map(function(x){return '<button data-tela="'+x[0]+'" class="'+(S.tela==x[0]?'on':'')+'">'+x[1]+'</button>'}).join("");
+ $('<div class="cel"><div class="topo">'+titulo+'</div><div class="tela">'+conteudo+'</div><div class="abas">'+a+'</div>'+(extra||'')+'</div>');
+}
+
+/* PROFESSOR */
+function telaProf(){
+ var c="",ex="";
+ if(S.tela=="turma"){
+  c='<h2>7º A - Matemática</h2>'+(S.ultimo?'<div class="aviso">Registro salvo: '+S.ultimo+' <button class="peq btn2" data-acao="desfazer" style="display:inline;padding:3px 8px">desfazer</button></div>':'')+'<p class="cinza">Clique no aluno para registrar.</p><div class="alunos">'+
+   TURMA.map(function(n){return '<button class="al" data-al="'+n+'"><span>'+n.slice(0,2)+'</span>'+n+'</button>'}).join("")+'</div>';
+  if(S.passo==1)ex='<div class="fundo"><div class="janela"><p class="passo">Passo 2 de 3</p><h3>'+S.al+': qual dimensão?</h3>'+DIM.map(function(d,i){return '<button class="btn2" data-dim="'+i+'">'+d+'</button>'}).join("")+'<button class="btn2" data-acao="fechar" style="text-align:center">Cancelar</button></div></div>';
+  if(S.passo==2)ex='<div class="fundo"><div class="janela"><p class="passo">Passo 3 de 3</p><h3>'+S.al+' - '+DIM[S.d]+'</h3><button class="btn2" data-tipo="1">Avanço</button><button class="btn2" data-tipo="2">Neutro</button><button class="btn2" data-tipo="3">Ponto de atenção</button><button class="btn2" data-acao="fechar" style="text-align:center">Cancelar</button></div></div>';
+ }
+ if(S.tela=="hist"){
+  c='<h2>Histórico</h2><select data-sel="hist">'+TURMA.map(function(n){return '<option'+(n==S.hist?' selected':'')+'>'+n+'</option>'}).join("")+'</select>'+lista(S.hist,false);
+ }
+ if(S.tela=="devol"){
+  c='<h2>Devolutiva - Ana</h2><p class="cinza">Escuro: professores. Claro: autoavaliação.</p>'+barras(prof,auto);
+  if(auto)c+='<p class="ok">Autoavaliação recebida.</p>';
+  else if(pedido)c+='<p class="cinza">Autoavaliação pedida. Aguardando a aluna.</p>';
+  else c+='<button class="btn2" data-acao="pedir">Pedir autoavaliação</button>';
+  c+=devol?'<p class="ok">Devolutiva enviada para a aluna e o responsável.</p>':'<h3>Comentário</h3><textarea id="txtdev" placeholder="Escreva a devolutiva"></textarea><button class="btn" data-acao="devol">Enviar devolutiva</button>';
+ }
+ celular("Profa. Marta",[["turma","Turma"],["hist","Histórico"],["devol","Devolutiva"]],c,ex);
+}
+
+/* ALUNO / RESPONSAVEL */
+function telaAluno(){
+ var c="",ex="";
+ if(S.tela=="prog"){
+  c='<h2>Olá, Ana</h2>'+(pedido&&!auto?'<div class="aviso">A professora pediu sua autoavaliação. <button class="peq btn2" data-tela="auto" style="display:inline;padding:3px 8px">responder</button></div>':'')+
+   '<h3>Como você está</h3><p class="cinza">Escuro: professores. Claro: você.</p>'+barras(prof,auto)+
+   '<h3>Evolução em Autonomia</h3><svg viewBox="0 0 300 110" width="100%"><line x1="20" y1="90" x2="290" y2="90" stroke="#ccc"/><polyline fill="none" stroke="#1f4e79" stroke-width="2" points="20,80 65,76 110,78 155,66 200,58 245,50 290,42"/><text x="20" y="105" font-size="10" fill="#777">abr</text><text x="270" y="105" font-size="10" fill="#777">out</text></svg>'+
+   '<p class="cinza">Só você e sua família veem esta página.</p>';
+ }
+ if(S.tela=="auto"){
+  if(auto)c='<h2>Autoavaliação</h2><p class="ok">Enviada. Obrigada!</p>';
+  else{
+   c='<h2>Autoavaliação</h2><p class="cinza">Como você se vê neste bimestre?</p>';
+   var op=["Ainda não","Às vezes","Quase sempre","Sempre"];
+   DIM.forEach(function(d,i){c+='<b>'+d+'</b><div class="opc">'+op.map(function(o,k){return '<button data-auto="'+i+'-'+(k+1)+'" class="'+(S.resp&&S.resp[i]==k+1?'on':'')+'">'+o+'</button>'}).join("")+'</div>'});
+   c+='<button class="btn" data-acao="enviarauto">Enviar</button>';
+  }
+ }
+ if(S.tela=="regs")c='<h2>Meus registros</h2><p class="cinza">Clique em um registro para ver ou contestar.</p>'+lista("Ana",true);
+ if(S.reg)ex=janelaReg();
+ celular("Ana - 7º A",[["prog","Progresso"],["auto","Autoavaliação"],["regs","Registros"]],c,ex);
+}
+function telaResp(){
+ var c="",ex="";
+ if(S.tela=="ini"){
+  c='<h2>Ana - 7º A</h2><h3>Novidades</h3>'+(devol?'<div class="aviso">Nova devolutiva da Profa. Marta.</div>':'')+'<p>Frequência: 96%</p><h3>Progresso</h3>'+barras(prof,auto)+'<h3>Devolutivas</h3>'+(devol?'<div class="msg">'+devol+'<br><span class="cinza">Profa. Marta - 3º bimestre</span></div>':'')+'<div class="msg">Ana colabora bem com os colegas. Combinado: tentar resolver sozinha antes de pedir ajuda.<br><span class="cinza">Conselho de classe - 2º bimestre</span></div>';
+ }
+ if(S.tela=="regs")c='<h2>Registros</h2><p class="cinza">Clique em um registro para ver ou contestar.</p>'+lista("Ana",true);
+ if(S.tela=="msg"){
+  var m=cont.filter(function(x){return x.al=="Ana"});
+  c='<h2>Mensagens</h2>'+(m.length?m.map(function(x){return '<div class="msg"><b>'+x.reg+'</b><br>'+x.msg+'<br><span class="cinza">'+(x.st=="aberta"?"Aguardando a coordenação":x.st)+'</span>'+(x.resposta?'<br>Coordenação: '+x.resposta:'')+'</div>'}).join(""):'<p class="cinza">Nenhuma mensagem.</p>');
+ }
+ if(S.reg)ex=janelaReg();
+ celular("Responsável - Cláudia",[["ini","Início"],["regs","Registros"],["msg","Mensagens"]],c,ex);
+}
+function janelaReg(){
+ var r=regs.filter(function(x){return x.id==S.reg})[0];
+ var j='<h3>'+DIM[r.d]+tg(r.t)+'</h3><p class="cinza">'+r.data+' - '+r.prof+'</p><p>'+(r.obs||'Sem observação.')+'</p>';
+ j+=r.contestado?'<p class="ok">Contestação enviada para a coordenação.</p>':'<textarea id="txtc" placeholder="Explique por que discorda deste registro"></textarea><button class="btn" data-acao="contestar">Contestar</button>';
+ return '<div class="fundo"><div class="janela">'+j+'<button class="btn2" data-acao="fecharreg" style="text-align:center">Fechar</button></div></div>';
+}
+
+/* COORDENAÇÃO */
+var ALERTAS=[["Lucas Pereira","8º B",1,1,1,"Novo"],["Beatriz Fonseca","7º B",1,1,1,"Intervenção"],["Yasmin Correia","6º A",1,1,0,"Em análise"],["Gustavo Melo","9º A",1,0,1,"Intervenção"],["Thiago Moreira","8º A",1,0,1,"Novo"]];
+var TURMAS=["6º A","6º B","7º A","7º B","8º A","8º B","9º A"];
+var HEAT=[[12,9,15,8,10],[14,11,18,12,9],[10,7,21,9,8],[16,19,22,14,31],[18,12,26,17,13],[38,15,29,21,17],[24,10,20,27,12]];
+function cor(v){var l=95-v*1.3;return 'hsl(30,80%,'+l+'%)'}
+function telaCoord(){
+ var t=S.coordTela,c="";
+ var menu=[["alertas","Alertas"],["turmas","Painel por turma"],["clima","Clima escolar"],["cont","Contestações"]].map(function(x){return '<button data-ct="'+x[0]+'" class="'+(t==x[0]||(t=="aluno"&&x[0]=="alertas")?'on':'')+'">'+x[1]+'</button>'}).join("");
+ if(t=="alertas"){
+  c='<h2>Alertas</h2><div class="cards"><div class="card"><b>'+ALERTAS.length+'</b>alertas</div><div class="card ver"><b>2</b>com 3 sinais</div><div class="card"><b>'+cont.filter(function(x){return x.st=="aberta"}).length+'</b>contestações</div></div>'+
+  '<table><tr><th>Aluno</th><th>Turma</th><th>Sinais (atitude, faltas, notas)</th><th>Situação</th></tr>'+
+  ALERTAS.map(function(a,i){return '<tr class="clic" data-alerta="'+i+'"><td>'+a[0]+'</td><td>'+a[1]+'</td><td><span class="bola'+(a[2]?' on':'')+'"></span><span class="bola'+(a[3]?' on':'')+'"></span><span class="bola'+(a[4]?' on':'')+'"></span></td><td>'+a[5]+'</td></tr>'}).join("")+'</table><p class="cinza">Vermelho = queda no indicador nas últimas 4 semanas. Clique no aluno para ver detalhes.</p>';
+ }
+ if(t=="aluno"){
+  var a=ALERTAS[S.alerta];
+  c='<p><button class="btn2 peq" data-ct="alertas">voltar</button></p><h2>'+a[0]+' - '+a[1]+'</h2><div class="cards"><div class="card'+(a[2]?' ver':'')+'"><b>'+(a[2]?'41%':'66%')+'</b>registros de avanço</div><div class="card'+(a[3]?' ver':'')+'"><b>'+(a[3]?'78%':'95%')+'</b>frequência</div><div class="card'+(a[4]?' ver':'')+'"><b>'+(a[4]?'5,2':'7,1')+'</b>média</div></div>'+
+  '<h3>Dimensões</h3><div style="max-width:420px">'+barras([2.4,3.1,1.9,2.2,3.0])+'</div>'+
+  '<h3>Intervenção</h3>'+(a.int?'<p class="ok">Intervenção registrada: '+a.int+'</p>':'<textarea id="txti" placeholder="Ex.: conversa com a família, plano de estudos" style="max-width:420px"></textarea><br><button class="btn peq" data-acao="interv">Registrar intervenção</button>');
+ }
+ if(t=="turmas"){
+  c='<h2>Painel por turma</h2><p class="cinza">% de registros de "atenção" em cada dimensão. Clique numa turma para filtrar.</p><table class="heat"><tr><th>Turma</th>'+DIM.map(function(d){return '<th>'+d+'</th>'}).join("")+'</tr>'+
+  TURMAS.map(function(tu,i){return '<tr><td style="text-align:left"><b>'+tu+'</b></td>'+HEAT[i].map(function(v){return '<td style="background:'+cor(v)+'">'+v+'%</td>'}).join("")+'</tr>'}).join("")+'</table>';
+ }
+ if(t=="clima"){
+  c='<h2>Clima escolar</h2><p class="cinza">Pesquisa mensal com os alunos (0 a 100).</p><svg viewBox="0 0 500 150" width="100%" style="max-width:600px"><line x1="30" y1="130" x2="490" y2="130" stroke="#ccc"/><polyline fill="none" stroke="#1f4e79" stroke-width="2" points="30,90 95,82 160,86 225,100 290,74 355,78 420,66 485,58"/>'+["mar","abr","mai","jun","jul","ago","set","out"].map(function(m,i){return '<text x="'+(22+i*65)+'" y="145" font-size="11" fill="#777">'+m+'</text>'}).join("")+'<text x="470" y="50" font-size="12">76</text></svg>'+
+  '<h3>Intervenções</h3><table><tr><th>Ação</th><th>Para</th><th>Situação</th></tr>'+interv.map(function(x){return '<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+x[2]+'</td></tr>'}).join("")+'</table>';
+ }
+ if(t=="cont"){
+  var x=cont[S.c]||cont[0];
+  c='<h2>Contestações</h2><div style="display:flex;gap:20px;flex-wrap:wrap"><div style="width:240px">'+cont.map(function(k,i){return '<button class="btn2" data-c="'+i+'"'+(k===x?' style="border-color:#1f4e79;border-width:2px"':'')+'><b>'+k.al+'</b><br><span class="cinza">'+k.reg+'</span><br>'+(k.st=="aberta"?"Aberta":k.st)+'</button>'}).join("")+'</div>'+
+  '<div style="flex:1;min-width:260px"><h3>'+x.al+' - '+x.reg+'</h3><div class="msg">'+x.msg+'</div>'+
+  (x.st=="aberta"?'<textarea id="txtr" placeholder="Resposta para o aluno e a família"></textarea><button class="btn peq" data-dec="Registro corrigido">Corrigir registro</button><button class="btn2 peq" data-dec="Registro mantido">Manter registro</button>':'<p class="ok">'+x.st+'</p>'+(x.resposta?'<div class="msg">'+x.resposta+'</div>':''))+'</div></div>';
+ }
+ $('<div class="pc"><div class="lado"><b>Coordenação</b>'+menu+'</div><div class="miolo">'+c+'</div></div>');
+}
+
+function render(){
+ document.querySelectorAll(".perfis button").forEach(function(b){b.className=b.dataset.p==S.p?"on":""});
+ ({prof:telaProf,coord:telaCoord,aluno:telaAluno,resp:telaResp})[S.p]();
+}
+var inicio={prof:"turma",aluno:"prog",resp:"ini"};
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button,[data-reg],tr[data-alerta]");if(!b)return;var d=b.dataset;
+ if(d.p){S.p=d.p;S.tela=inicio[d.p];S.reg=null;S.passo=0}
+ else if(d.tela){S.tela=d.tela;S.reg=null}
+ else if(d.al){S.al=d.al;S.passo=1;S.ultimo=null}
+ else if(d.dim){S.d=+d.dim;S.passo=2}
+ else if(d.tipo){var r={id:nid++,al:S.al,d:S.d,t:+d.tipo,data:"03/11",prof:"Marta (Mat.)",obs:""};regs.unshift(r);S.passo=0;S.ultimo=S.al+", "+DIM[S.d]+", "+TIPO[d.tipo];S.lastId=r.id}
+ else if(d.reg){S.reg=+d.reg}
+ else if(d.auto){var p=d.auto.split("-");S.resp=S.resp||[0,0,0,0,0];S.resp[+p[0]]=+p[1]}
+ else if(d.ct){S.coordTela=d.ct}
+ else if(d.alerta){S.alerta=+d.alerta;S.coordTela="aluno"}
+ else if(d.c){S.c=+d.c}
+ else if(d.dec){var x=cont[S.c];x.st=d.dec;x.resposta=document.getElementById("txtr").value||"Analisamos o caso com o professor.";if(d.dec=="Registro corrigido"&&x.regId){regs.forEach(function(r){if(r.id==x.regId)r.t=2})}}
+ else if(d.acao){
+  var a=d.acao;
+  if(a=="fechar")S.passo=0;
+  if(a=="desfazer"){regs=regs.filter(function(r){return r.id!=S.lastId});S.ultimo=null}
+  if(a=="pedir")pedido=true;
+  if(a=="devol")devol=document.getElementById("txtdev").value||"Ana avançou em autonomia. Combinado: usar a agenda para os prazos.";
+  if(a=="enviarauto"){if(!S.resp||S.resp.indexOf(0)>=0){alertar("Responda as 5 perguntas.");return}auto=S.resp.slice()}
+  if(a=="fecharreg")S.reg=null;
+  if(a=="contestar"){var r=regs.filter(function(x){return x.id==S.reg})[0];r.contestado=true;cont.unshift({al:"Ana",turma:"7º A",regId:r.id,reg:DIM[r.d]+" - "+TIPO[r.t]+" ("+r.data+")",msg:document.getElementById("txtc").value||"Gostaria de conversar sobre este registro.",st:"aberta"});S.c=0}
+  if(a=="interv"){ALERTAS[S.alerta].int=document.getElementById("txti").value||"Conversa com a família";ALERTAS[S.alerta][5]="Intervenção";interv.unshift([ALERTAS[S.alerta].int,ALERTAS[S.alerta][0],"Em andamento"])}
+ }
+ render();
+});
+document.addEventListener("change",function(e){if(e.target.dataset.sel=="hist"){S.hist=e.target.value;render()}});
+function alertar(t){var p=document.querySelector(".tela");if(p){var d=document.createElement("p");d.className="aviso";d.style.background="#fbe8cc";d.style.borderColor="#d9a35a";d.textContent=t;p.appendChild(d);p.scrollTop=p.scrollHeight}}
+render();
+</script>
+</body>
+</html>
